@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/datasciencecoursera/static/js/main.058e2489.js",
+    "main.js": "/datasciencecoursera/static/js/main.901d02b0.js",
     "index.html": "/datasciencecoursera/index.html",
-    "main.058e2489.js.map": "/datasciencecoursera/static/js/main.058e2489.js.map"
+    "main.901d02b0.js.map": "/datasciencecoursera/static/js/main.901d02b0.js.map"
   },
   "entrypoints": [
-    "static/js/main.058e2489.js"
+    "static/js/main.901d02b0.js"
   ]
 }
