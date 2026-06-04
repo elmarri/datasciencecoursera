@@ -24,7 +24,8 @@ const START_BAL  = 10000;  // Demo account starting balance
 const MAX_OPEN   = 3;      // Max concurrent open positions
 const VAULT_AT   = 2000;   // Bank $2k of profit and reset to START_BAL
 const CIRCUIT_AT = 7000;   // Halt all trading if balance drops below this
-const SKEY       = "beast_fx_v2";
+const SKEY          = "beast_fx_v2";
+const DEFAULT_FH_KEY = "d8gu0d1r01qhjpmpn5bgd8gu0d1r01qhjpmpn5c0";
 
 // ─── HELPERS ──────────────────────────────────────────────────────────────
 const fmt = (sym, v) => (v ?? 0).toFixed(PM[sym]?.d ?? 4);
@@ -594,9 +595,13 @@ export default function App() {
         if (sv.savedAt)          addLog(`✅ Restored ${new Date(sv.savedAt).toLocaleString()}`, "system");
       }
       setLoaded(true);
-      addLog("▶ BEAST v2 ready — add Finnhub key in Data tab for live prices", "system");
+      // Auto-connect Finnhub with saved key or built-in default key
+      const keyToUse = (sv?.fhKey) || DEFAULT_FH_KEY;
+      setFhInput(keyToUse);
+      addLog("▶ BEAST v2 — connecting to Finnhub live prices…", "system");
+      setTimeout(() => connectFinnhub(keyToUse), 600);
     });
-  }, [addLog]);
+  }, [addLog, connectFinnhub]);
 
   // ── ANALYTICS ─────────────────────────────────────────────────────────
   const runAnalytics = useCallback(() => {
