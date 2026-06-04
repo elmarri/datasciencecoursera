@@ -54,10 +54,10 @@ const pipUSD = (sym, nPips, lots, refPrice) => {
 // Avoids dead-market periods (late NY close / Asian only)
 const getSession = () => {
   const h = new Date().getUTCHours();
-  if (h >= 8  && h < 12) return { name:"London",   active:true,  vol:1.0, col:"#00d4aa" };
-  if (h >= 12 && h < 17) return { name:"NY",        active:true,  vol:1.1, col:"#818cf8" };
-  if (h >= 0  && h < 8)  return { name:"Tokyo",     active:true,  vol:0.7, col:"#f59e0b" };
-  return                         { name:"Closing",   active:false, vol:0.4, col:"#445"    };
+  if (h >= 8  && h < 13) return { name:"London",       active:true,  vol:1.0, col:"#00d4aa" };
+  if (h >= 13 && h < 20) return { name:"New York",     active:true,  vol:1.1, col:"#818cf8" };
+  if (h >= 20 && h < 22) return { name:"NY Close",     active:false, vol:0.3, col:"#445"    };
+  return                         { name:"Sydney/Tokyo", active:true,  vol:0.7, col:"#f59e0b" };
 };
 
 // ─── STORAGE ─────────────────────────────────────────────────────────────
